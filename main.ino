@@ -6,7 +6,6 @@
 #define lcd_height 4
 LiquidCrystal_I2C lcd(0x27,20,4);
 
-//
 const byte ROWS = 4; // four rows
 const byte COLS = 4; // four columns
 char keys[ROWS][COLS] = {
@@ -40,6 +39,7 @@ int count;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
+  pin_init();
   lcd_setup();
 
 
