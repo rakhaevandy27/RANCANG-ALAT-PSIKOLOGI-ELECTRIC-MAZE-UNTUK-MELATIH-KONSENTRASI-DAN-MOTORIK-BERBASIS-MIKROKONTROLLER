@@ -34,6 +34,8 @@ int handle_state;
 int reed_1;
 int reed_2;
 int count;
+int start_line;
+int end_line;
 
 
 void setup() {
@@ -66,4 +68,26 @@ void pin_init(){
   pinMode(led_red, OUTPUT);
   pinMode(led_green, OUTPUT);
   pinMode(handlePin, INPUT_PULLUP);
+}
+
+void handle_state_check(){
+  handle_state = digitalRead(handlePin);
+  if(handle_state == LOW){
+    count_plus();
+    digitalWrite(led_red, HIGH);
+    digitalWrite(led_green, LOW);
+  }
+  else{
+    digitalWrite(led_red, LOW);
+    digitalWrite(led_green, HIGH);
+  }
+}
+
+void reed_sw_check(){
+  reed_1 = digitalRead(reed_sw_1);
+  reed_2 = digitalRead(reed_sw_2);
+}
+
+void count_plus(){
+  count++;
 }
